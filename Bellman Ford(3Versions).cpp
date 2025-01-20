@@ -63,11 +63,11 @@ void bellman_ford_2rows(const vector<vector<pair<int, int>>>& graph, int source)
 
         // Update curr_row based on prev_row
         for (int u = 0; u < n; ++u) {
-            if (D[prev_row][u] != INF) {
+            if (D[ k % 2][u] != INF) {
                 for (const auto& edge : graph[u]) {
                     int v = edge.first;
                     int weight = edge.second;
-                    if (D[ k % 2][u] + weight < D[curr_row][v]) {
+                    if (D[ k % 2][u] + weight < D[(k + 1) % 2][v]) {
                         D[(k + 1) % 2][v] = D[ k % 2][u] + weight;
                     }
                 }
